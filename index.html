@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Canvas</title>
+</head>
+
+<body onload="init()">
+    <h1>Piccaso generator</h1>
+    <canvas width="700" height="600"></canvas>
+    <div class="pallete">
+        <label for="lineWidth">Line Width:</label>
+        <input type="number" id="lineWidth" onchange="onSetLineWidth(this.value)">
+
+        <label for="colors">Pick color:</label>
+        <input id="colors" type="color" onchange="onPickColor(this.value)">
+
+        <label for="bgc">Pick color:</label>
+        <input id="bgc" type="color" value="#FFFFFF" onchange="onPickBGC(this.value)">
+
+        <label for="shapes">Pick Shape</label>
+        <select name="" id="shapes" onchange="onPickShape(this.value)">
+            <option value="line">Line</option>
+            <option value="triangle">Triangle</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="circle">Circle</option>
+        </select>
+
+        <button onclick="onClearCanvas()">Clear All</button>
+    </div>
+    <script src="scripts/services/user-services.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
