@@ -33,27 +33,21 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
-    console.log('Im from onDown')
     gIsDraw = true
-    //Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
-    console.log(pos);
+    gCtx.beginPath()
+
 }
 
 function onUp(ev) {
-    console.log('Im from onUp')
     gIsDraw = false
-    //Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
-    console.log(pos);
 }
 
 function onMove(ev) {
     if (!gIsDraw) return
-    console.log('Im from onMove')
     //Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
-    console.log(pos, ev);
     drawShape(pos)
 }
 
@@ -69,6 +63,9 @@ function drawShape(pos) {
             break
         case 'circle':
             drawCircle(pos)
+            break
+        case 'triangle':
+            drawTriangle(pos)
             break
     }
 
@@ -124,19 +121,16 @@ function drawLine({ x, y }) {
 }
 
 function drawRect({ x, y }) {
-    gCtx.strokeRect(x, y, 150, 300)
-    gCtx.fillRect(x, y, 150, 150)
+    gCtx.strokeRect(x, y, 150, 150)
 }
 
-function drawCircle({ x, y }) {
+function drawCircle({ x, y }, size = 60) {
     gCtx.arc(x, y, size, 0, 2 * Math.PI)
     gCtx.stroke()
-    gCtx.fill()
 }
 
-// function drawArc(x, y, size = 60, color = 'blue') {
-//     gCtx.beginPath()
-//     gCtx.lineWidth = '6'
-//     gCtx.strokeStyle = 'white'
-//     gCtx.fillStyle = color
-// }
+function drawTriangle({ x, y }) {
+    gCtx.lineTo(x + 60, y + 60)
+    gCtx.lineTo(x - 60, y + 60)
+    gCtx.lineTo(x, y)
+    gCtx.stroke() 
