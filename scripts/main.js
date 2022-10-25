@@ -39,6 +39,7 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
+    ev.preventDefault()
     gIsDraw = true
     const pos = getEvPos(ev)
     gCtx.beginPath()
@@ -46,12 +47,14 @@ function onDown(ev) {
 }
 
 function onUp(ev) {
+    ev.preventDefault()
     gIsDraw = false
     const pos = getEvPos(ev)
 }
 
 function onMove(ev) {
     if (!gIsDraw) return
+    ev.preventDefault()
     //Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
     drawShape(pos)
