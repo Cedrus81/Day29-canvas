@@ -1,16 +1,23 @@
-canvas{
-    position: fixed;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 5px 5px 15px 5px #000000;
-    cursor: crosshair;
+body.flex{
+    gap: 3em;
 }
 
+canvas{
+    box-shadow: 5px 5px 15px 5px #3c4b1b;
+    cursor: crosshair;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+a{ 
+    color: #000000;
+}
+.canvas-container {
+    width: 60vw;
+    height: 80vh;
+  }
+
 .pallete {
-    position: fixed;
-    bottom: 0;
-    left: 0;
     background-color: blue;
     display: flex;
     flex-direction: column;
@@ -19,4 +26,16 @@ canvas{
 
 .pallete > *{
     font-size: larger;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex.column{
+    flex-direction: column;
+}
+
+.flex.align-center{
+    align-items: center;
 }

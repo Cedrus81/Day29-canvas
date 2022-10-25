@@ -9,18 +9,20 @@
     <title>Canvas</title>
 </head>
 
-<body onload="init()">
+<body class="flex column align-center" onload="init()">
     <h1>Piccaso generator</h1>
-    <canvas width="700" height="600"></canvas>
+    <div class="canvas-container">
+        <canvas></canvas>
+    </div>
     <div class="pallete">
         <label for="lineWidth">Line Width:</label>
         <input type="number" id="lineWidth" onchange="onSetLineWidth(this.value)">
 
         <label for="colors">Pick color:</label>
-        <input id="colors" type="color" onchange="onPickColor(this.value)">
+        <input id="colors" type="color" value="#FFFFFF" onchange="onPickColor(this.value)">
 
         <label for="bgc">Pick background color:</label>
-        <input id="bgc" type="color" value="#FFFFFF" onchange="onPickBGC(this.value)">
+        <input id="bgc" type="color" onchange="onPickBGC(this.value)">
 
         <label for="shapes">Pick Shape</label>
         <select name="" id="shapes" onchange="onPickShape(this.value)">
@@ -29,10 +31,16 @@
             <option value="rectangle">Rectangle</option>
             <option value="circle">Circle</option>
         </select>
-
+        <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+        <button class="btn" onclick="uploadImg()">
+            Upload Image from Canvas
+        </button>
+        <p class="user-msg"></p>
+        <div class="share-container"></div>
         <button onclick="onClearCanvas()">Clear All</button>
     </div>
-    <script src="scripts/services/user-services.js"></script>
+    <script src="/scripts/services/upload.service.js"></script>
+    <script src="scripts/services/user.service.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 

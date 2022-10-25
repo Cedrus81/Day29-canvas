@@ -6,6 +6,8 @@ var gCtx = gElCanvas.getContext('2d')
 
 function init() {
     addListeners()
+    resizeCanvas()
+    gCtx.strokeStyle = 'white'
 }
 
 
@@ -16,8 +18,12 @@ function addListeners() {
     //Listen for resize ev 
     window.addEventListener('resize', () => {
         resizeCanvas()
-        renderCanvas()
     })
+}
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
 }
 
 function addMouseListeners() {
@@ -133,4 +139,11 @@ function drawTriangle({ x, y }) {
     gCtx.lineTo(x + 60, y + 60)
     gCtx.lineTo(x - 60, y + 60)
     gCtx.lineTo(x, y)
-    gCtx.stroke() 
+    gCtx.stroke()
+}
+
+
+function downloadImg(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg')// image/jpeg the default format
+    elLink.href = imgContent
+}
